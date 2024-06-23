@@ -20,3 +20,16 @@ class Solution:
             if k == 0:
                 return curr.val
             curr = curr.right
+
+    ## IN ORDER WITH VECTOR:
+    def kthSmallestVector(self, root, k):
+        values = []
+        self.inorder(root, values)
+        return values[k - 1]
+
+    def inorder(self, root, values):
+        if root is None:
+            return
+        self.inorder(root.left, values)
+        values.append(root.val)
+        self.inorder(root.right, values)
